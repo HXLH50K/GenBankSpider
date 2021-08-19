@@ -13,6 +13,7 @@
   "author": "hxlh50k",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
     "superagent": "^6.1.0"

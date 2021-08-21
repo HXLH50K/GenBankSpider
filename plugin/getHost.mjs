@@ -1,9 +1,10 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
 
-function getHost(targetId) {
-  // var api = "https://www.ncbi.nlm.nih.gov";
-  var api = "/api/";
+function getHost(targetId, api = "https://www.ncbi.nlm.nih.gov/") {
+  // var api = ;
+  // var api = "/api/";
+  api = api + "/";
   return new Promise((resolver, reject) => {
     const idUrl =
       api + "nuccore/" + targetId + "?report=gilist&log$=seqview&format=text";

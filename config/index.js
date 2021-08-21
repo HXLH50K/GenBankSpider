@@ -9,7 +9,6 @@ module.exports = {
     // Paths
     assetsSubDirectory: "static",
     assetsPublicPath: "/",
-    proxyTable: {},
 
     // Various Dev Server settings
     host: "localhost", // can be overwritten by process.env.HOST
@@ -35,6 +34,7 @@ module.exports = {
     proxyTable: {
       "/api": {
         target: "https://www.ncbi.nlm.nih.gov",
+        secure: true,
         changeOrigin: true,
         ws: true,
         pathRewrite: { "^/api": "" }

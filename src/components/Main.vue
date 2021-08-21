@@ -120,7 +120,7 @@ export default {
           that.ids.push(id)
         }
         for (let i = 0; i < that.ids.length; i++) {
-          getHost(that.ids[i]).then(result => {
+          getHost(that.ids[i], process.env.VUE_APP_BASE_API).then(result => {
             console.log(i)
             that.hosts.push(result)
             that.tableData.push({ id: that.ids[i], host: result })

@@ -13,7 +13,9 @@
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.10",
     "element-ui": "^2.15.5",
+    "jsonp": "^0.2.1",
     "vue": "^2.5.2",
+    "vue-jsonp": "^2.0.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

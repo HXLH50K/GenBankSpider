@@ -1,7 +1,8 @@
 const cheerio = require("cheerio");
 const axios = require("axios");
+const jsonp = require("jsonp");
 
-function getHost(targetId, api = "https://www.ncbi.nlm.nih.gov/") {
+function getHost(targetId, api = "https://www.ncbi.nlm.nih.gov") {
   // var api = ;
   // var api = "/api/";
   api = api + "/";
@@ -9,7 +10,7 @@ function getHost(targetId, api = "https://www.ncbi.nlm.nih.gov/") {
     const idUrl =
       api + "nuccore/" + targetId + "?report=gilist&log$=seqview&format=text";
     var numId = "";
-    axios
+    jsonp
       .get(idUrl)
       .then(resp => {
         let $ = cheerio.load(resp.data);
@@ -18,7 +19,7 @@ function getHost(targetId, api = "https://www.ncbi.nlm.nih.gov/") {
           .replace(/[\r\n]/g, "");
         let mainUrl = api + "sviewer/viewer.fcgi?id=" + numId;
         return new Promise(resolver => {
-          resolver(axios.get(mainUrl));
+          resolver(jsonp.get(mainUrl));
         });
       })
       .then(resp => {
@@ -38,7 +39,7 @@ function getHost(targetId, api = "https://www.ncbi.nlm.nih.gov/") {
 }
 export { getHost };
 
-// let targetId = "KJ001580.1";
-// getHost(targetId).then(result => {
-//   console.log(result);
-// });
+let targetId = "KJ001580.1";
+getHost(targetId).then(result => {
+  console.log(result);
+});
